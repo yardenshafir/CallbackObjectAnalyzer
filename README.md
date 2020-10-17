@@ -7,6 +7,8 @@ Build the solution and copy dbgeng.dll, dnghelp.dll and symsrv.dll from the dire
 The DLLs that are shipped with Windows are not always stable and could cause unexpected issues.
 
 ## Usage
+```
 -l : Create a dump of the local machine and analyze it. Requires admin privileges.
 -d <dump file path> : Analyze the dump in the supplied path.
 -k <connection options> : Connect to a kernel debugger and dump callback object information.
+```
