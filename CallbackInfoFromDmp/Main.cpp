@@ -353,7 +353,6 @@ int main(int argc, char* argv[])
     PWSTR buffer;
     PUNICODE_STRING callbackName;
 
-    ULONG64 firstCallbackAddress;
     ULONG64 callbackListHeadAddress;
     ULONG64 callbackListHead;
     ULONG64 callbackAddress;
@@ -540,7 +539,6 @@ int main(int argc, char* argv[])
     }
 
     callbackAddress = (ULONG64)(CONTAINING_RECORD(callbackListHead, CALLBACK_OBJECT, CallbackList));
-    firstCallbackAddress = callbackAddress;
 
     //
     // Allocate memory for an object header
@@ -719,7 +717,7 @@ int main(int argc, char* argv[])
         //
         callbackAddress = (ULONG64)(CONTAINING_RECORD((ULONG64)callback.CallbackList.Flink, CALLBACK_OBJECT, CallbackList));
 
-    } while (callbackAddress != firstCallbackAddress);
+    } while ((ULONG64)callback.CallbackList.Flink != callbackListHeadAddress);
 
 Exit:
     if (objHeader != nullptr)
